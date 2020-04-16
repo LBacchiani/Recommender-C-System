@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bf3f73ba-fa12-4caa-a422-3c64fdf76612" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Object" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1a29QxzXV1noa0W0QY3AHgtaA3z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="semanticweb1920.parser" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lori\Desktop\web semantico\assignment2\ConsegnaBacchiani\recommender-C-system\src\main\resources" />
+      <recent name="C:\Users\Lori\Desktop\web semantico\assignment2\ConsegnaBacchiani\recommender-C-system\src\main\kotlin\semanticweb1920\parser" />
+      <recent name="C:\Users\Lori\Desktop\web semantico\assignment2\ConsegnaBacchiani\recommender-C-system\src\main\kotlin\semanticweb1920\rdf\serialization\mapping" />
+      <recent name="C:\Users\Lori\Desktop\web semantico\assignment2\ConsegnaBacchiani\recommender-C-system\src\main\kotlin\semanticweb1920\rdf\serialization" />
+      <recent name="C:\Users\Lori\Desktop\web semantico\assignment2\ConsegnaBacchiani\recommender-C-system\src\main\kotlin\semanticweb1920\rdf" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AppKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <module name="recommender-C-system.main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="12.0.1" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="semanticweb1920.AppKt" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.AppKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../../PPS-18-cardbattle" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../PPS-18-scalacraft-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../PdPeS/PPS-18-cardbattle" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../PdPeS/lab7" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../ruzzle-master" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../../scage-master" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf3f73ba-fa12-4caa-a422-3c64fdf76612" name="Default Changelist" comment="" />
+      <created>1585922809170</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585922809170</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="873" y="174" key="#Project_Structure" timestamp="1585922989466">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="873" y="174" key="#Project_Structure/0.0.1707.1027@0.0.1707.1027" timestamp="1585922989466" />
+    <state x="309" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586855708237">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="309" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1707.1027@0.0.1707.1027" timestamp="1586855708237" />
+    <state x="634" y="254" key="FileChooserDialogImpl" timestamp="1586855644651">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="634" y="254" key="FileChooserDialogImpl/0.0.1707.1027@0.0.1707.1027" timestamp="1586855644651" />
+    <state x="510" y="238" width="672" height="677" key="run.anything.popup" timestamp="1586707149101">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="510" y="238" width="672" height="677" key="run.anything.popup/0.0.1707.1027@0.0.1707.1027" timestamp="1586707149101" />
+    <state x="516" y="222" width="672" height="678" key="search.everywhere.popup" timestamp="1586705544442">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="516" y="222" width="672" height="678" key="search.everywhere.popup/0.0.1707.1027@0.0.1707.1027" timestamp="1586705544442" />
+  </component>
+</project>
