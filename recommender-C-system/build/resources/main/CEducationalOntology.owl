@@ -7,8 +7,28 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:C-Educational-Ontology="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
     
 
 
@@ -37,6 +57,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#educationalLevelOf">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasEducationalLevel"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EducationalLevel"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
     </owl:ObjectProperty>
     
@@ -46,8 +67,18 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#handleMaterialDifficultyLevel">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DifficultyLevel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasBadge -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasBadge">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Badge"/>
     </owl:ObjectProperty>
     
 
@@ -68,6 +99,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasEducationalLevel">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EducationalLevel"/>
     </owl:ObjectProperty>
@@ -78,6 +110,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasInterest">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#isInterestOf"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:ObjectProperty>
@@ -117,6 +150,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObject"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Rating"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#isDifficultyOf -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#isDifficultyOf">
@@ -130,6 +172,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#isInterestOf">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
     </owl:ObjectProperty>
     
@@ -140,6 +183,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#isPreferredBy">
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#prefers"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
     </owl:ObjectProperty>
     
@@ -175,8 +219,18 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#prefers -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#prefers">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#useSource -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#useSource">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
     </owl:ObjectProperty>
     
 
@@ -187,6 +241,29 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#MaterialRetrieved -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#MaterialRetrieved"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#rating -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#rating"/>
     
 
 
@@ -205,6 +282,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayType">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -212,7 +290,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Article -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Article">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -220,8 +300,16 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Audio -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Audio">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Badge -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Badge"/>
     
 
 
@@ -237,6 +325,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -245,6 +334,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpression">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Expression"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -252,6 +342,7 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Practical"/>
     </owl:Class>
     
@@ -261,6 +352,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -269,6 +361,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirective">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Directive"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -277,6 +370,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -301,6 +395,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirective">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Directive"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -309,6 +404,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferencingExpression">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Expression"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -331,6 +427,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LoopStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -353,6 +450,8 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -368,6 +467,7 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Exercise -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Exercise">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Practical"/>
     </owl:Class>
     
@@ -385,6 +485,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LoopStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -393,6 +494,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Executable"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -401,6 +503,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -425,6 +528,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DecisionMakingStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -432,7 +536,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Image -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Image">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -441,6 +547,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Directive"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -460,7 +567,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -476,6 +585,7 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
@@ -506,6 +616,7 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
@@ -515,6 +626,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -527,10 +639,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Rating -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Rating"/>
+    
+
+
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Expression"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -539,6 +658,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -546,7 +666,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -561,6 +683,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StorageClassModifier">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -569,6 +692,8 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -584,7 +709,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Summary -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Summary">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -592,7 +719,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Survey -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Survey">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -601,6 +730,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DecisionMakingStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -617,6 +747,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#TypeQualifier">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -625,6 +756,8 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -640,7 +773,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:Class>
     
 
@@ -649,6 +784,7 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatement">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LoopStatement"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
     </owl:Class>
     
 
@@ -670,15 +806,25 @@
     
 
 
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ActiveUser -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ActiveUser">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Badge"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AlbertoBacchiani -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AlbertoBacchiani">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
         <handleMaterialDifficultyLevel rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Easy"/>
         <handleMaterialDifficultyLevel rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Hard"/>
         <handleMaterialDifficultyLevel rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Medium"/>
         <hasEducationalLevel rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighSchool"/>
         <hasInterest rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union"/>
+        <MaterialRetrieved rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">10</MaterialRetrieved>
     </owl:NamedIndividual>
     
 
@@ -686,7 +832,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AndresCola -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AndresCola">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+        <useSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_18_le_funzioni_parte_iii.712.html"/>
+        <MaterialRetrieved rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">3</MaterialRetrieved>
     </owl:NamedIndividual>
     
 
@@ -701,6 +850,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.w3resource.com/c-programming-exercises/array/index.php"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayType"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Exercise"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.5</rating>
     </owl:NamedIndividual>
     
 
@@ -714,6 +864,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_10_i_vettori.686.html"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayType"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.5</rating>
     </owl:NamedIndividual>
     
 
@@ -722,6 +873,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayType">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayExercise"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArraySlide"/>
     </owl:NamedIndividual>
     
 
@@ -730,6 +885,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Article">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Article"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:NamedIndividual>
     
 
@@ -738,6 +896,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Audio">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Audio"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatementAudio"/>
     </owl:NamedIndividual>
     
 
@@ -752,6 +914,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://riptutorial.com/c/example/12392/auto"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoModifier"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">5.0</rating>
     </owl:NamedIndividual>
     
 
@@ -759,7 +922,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoModifier -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoModifier">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StorageClassModifier"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoCodeExample"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticModifier"/>
@@ -777,6 +943,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.science.unitn.it/~fiorella/guidac/guidac016.html"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.2</rating>
     </owl:NamedIndividual>
     
 
@@ -784,7 +951,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakCodeExample"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoStatement"/>
     </owl:NamedIndividual>
@@ -795,6 +965,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpression">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpression"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Expression"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpressionLecture"/>
     </owl:NamedIndividual>
     
 
@@ -809,6 +982,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.tutorialspoint.com/cprogramming/c_type_casting.htm"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpression"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.8</rating>
     </owl:NamedIndividual>
     
 
@@ -817,6 +991,14 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Practical"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoCodeExample"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakCodeExample"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoCodeExample"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseCodeExample"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StructCodeExample"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#UnionCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -825,6 +1007,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirective">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirective"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Directive"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirectiveLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirective"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective"/>
     </owl:NamedIndividual>
@@ -840,6 +1025,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.cs.auckland.ac.nz/references/unix/digital/AQTLTBTE/DOCU_078.HTM"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirective"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">5.0</rating>
     </owl:NamedIndividual>
     
 
@@ -847,7 +1033,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Const -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Const">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#TypeQualifier"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConstLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Volatile"/>
     </owl:NamedIndividual>
     
@@ -863,6 +1052,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.geeksforgeeks.org/const-qualifier-in-c/"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Const"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.2</rating>
     </owl:NamedIndividual>
     
 
@@ -870,7 +1060,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatementLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatement"/>
@@ -889,6 +1082,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://docs.microsoft.com/it-it/cpp/c-language/continue-statement-c?view=vs-2019"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.9</rating>
     </owl:NamedIndividual>
     
 
@@ -897,6 +1091,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirective">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirective"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Directive"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirectiveLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirective"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective"/>
     </owl:NamedIndividual>
@@ -913,6 +1110,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://docs.microsoft.com/it-it/cpp/preprocessor/hash-define-directive-c-cpp?view=vs-2019"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirective"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.7</rating>
     </owl:NamedIndividual>
     
 
@@ -927,6 +1125,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.html.it/pag/15511/dichiarazione-di-variabili-puntatore/"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferencingExpression"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.3</rating>
     </owl:NamedIndividual>
     
 
@@ -935,6 +1134,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferencingExpression">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferencingExpression"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Expression"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferenceLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression"/>
     </owl:NamedIndividual>
@@ -945,6 +1147,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LoopStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatementExercise"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatement"/>
@@ -963,6 +1168,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://codeforwin.org/2015/06/for-do-while-loop-programming-exercises.html"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Exercise"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.1</rating>
     </owl:NamedIndividual>
     
 
@@ -970,7 +1176,21 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Easy -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Easy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DifficultyLevel"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Easy"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayExercise"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakCodeExample"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConstLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatementLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirectiveLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatementExercise"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EnumLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseCodeExample"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirectiveLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#UnionCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -978,7 +1198,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
         <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EnumLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union"/>
@@ -996,6 +1219,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.geeksforgeeks.org/enumeration-enum-c/"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.7</rating>
     </owl:NamedIndividual>
     
 
@@ -1004,6 +1228,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Exercise">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Exercise"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Practical"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayExercise"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatementExercise"/>
     </owl:NamedIndividual>
     
 
@@ -1011,7 +1239,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternModifier -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternModifier">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StorageClassModifier"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternVideo"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticModifier"/>
@@ -1028,6 +1259,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.youtube.com/watch?v=ySY_FlA7EvA"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternModifier"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.8</rating>
     </owl:NamedIndividual>
     
 
@@ -1036,6 +1268,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatement">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LoopStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatementVideo"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement"/>
@@ -1054,6 +1289,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.youtube.com/watch?v=FPjLbPu5BsQ"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.8</rating>
     </owl:NamedIndividual>
     
 
@@ -1061,7 +1297,11 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Executable"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isInterestOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LorenzoBacchiani"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnStatement"/>
     </owl:NamedIndividual>
     
@@ -1079,6 +1319,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_19_le_funzioni_parte_iv.716.html"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.3</rating>
     </owl:NamedIndividual>
     
 
@@ -1093,6 +1334,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.programiz.com/c-programming/c-goto-statement"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.4</rating>
     </owl:NamedIndividual>
     
 
@@ -1100,7 +1342,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoCodeExample"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
     </owl:NamedIndividual>
@@ -1110,7 +1355,12 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Hard -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Hard">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DifficultyLevel"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Hard"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoCodeExample"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferenceLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#PointerSlide"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1118,7 +1368,25 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighSchool -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighSchool">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EducationalLevel"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighSchool"/>
+        <educationalLevelOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AlbertoBacchiani"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighWillingUser -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighWillingUser">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Badge"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#High_Valuable -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#High_Valuable">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Rating"/>
     </owl:NamedIndividual>
     
 
@@ -1133,6 +1401,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.tutorialspoint.com/cprogramming/if_else_statement_in_c.htm"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.8</rating>
     </owl:NamedIndividual>
     
 
@@ -1140,7 +1409,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DecisionMakingStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseCodeExample"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchStatement"/>
     </owl:NamedIndividual>
     
@@ -1150,6 +1422,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Image">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Image"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:NamedIndividual>
     
 
@@ -1157,7 +1432,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Directive"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirectiveLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirective"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirective"/>
     </owl:NamedIndividual>
@@ -1173,6 +1451,15 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://stackoverflow.com/questions/464560/how-to-use-include-directive-correctly"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirective"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.1</rating>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LazyUser -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LazyUser">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Badge"/>
     </owl:NamedIndividual>
     
 
@@ -1180,7 +1467,22 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpressionLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirectiveLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConstLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatementLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferenceLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EnumLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirectiveLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#VolatileLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1188,6 +1490,7 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LorenzoBacchiani -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LorenzoBacchiani">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
         <handleMaterialDifficultyLevel rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Easy"/>
         <handleMaterialDifficultyLevel rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Hard"/>
@@ -1196,6 +1499,15 @@
         <hasInterest rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function"/>
         <hasInterest rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer"/>
         <hasInterest rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct"/>
+        <MaterialRetrieved rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">20</MaterialRetrieved>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Low_Valuable -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Low_Valuable">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Rating"/>
     </owl:NamedIndividual>
     
 
@@ -1203,7 +1515,9 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LucaZamagni -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LucaZamagni">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Person"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+        <MaterialRetrieved rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">9</MaterialRetrieved>
     </owl:NamedIndividual>
     
 
@@ -1211,7 +1525,19 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Medium -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Medium">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DifficultyLevel"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Medium"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArraySlide"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpressionLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirectiveLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternVideo"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatementVideo"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoCodeExample"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StructCodeExample"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#VolatileLecture"/>
+        <isDifficultyOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatementAudio"/>
     </owl:NamedIndividual>
     
 
@@ -1219,7 +1545,11 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isInterestOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LorenzoBacchiani"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#PointerSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1235,6 +1565,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_15_i_puntatori_iii_parte.708.html"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.0</rating>
     </owl:NamedIndividual>
     
 
@@ -1242,7 +1573,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Expression"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferencingExpression"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Pointer"/>
     </owl:NamedIndividual>
@@ -1258,6 +1592,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.html.it/pag/15511/dichiarazione-di-variabili-puntatore/"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingExpression"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</rating>
     </owl:NamedIndividual>
     
 
@@ -1272,6 +1607,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.webmasterpoint.org/programmazione/programmazione/c/variabili-register.html"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterModifier"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">5.0</rating>
     </owl:NamedIndividual>
     
 
@@ -1279,7 +1615,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterModifier -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterModifier">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StorageClassModifier"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticModifier"/>
@@ -1297,6 +1636,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://docs.microsoft.com/it-it/cpp/c-language/return-statement-c?view=vs-2019"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.8</rating>
     </owl:NamedIndividual>
     
 
@@ -1304,7 +1644,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BranchingStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Function"/>
     </owl:NamedIndividual>
     
@@ -1313,7 +1656,14 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SchoolarMaterial"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArraySlide"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirectiveLecture"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#PointerSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1327,6 +1677,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://en.wikipedia.org/wiki/Static_(keyword)"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticModifier"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.9</rating>
     </owl:NamedIndividual>
     
 
@@ -1334,7 +1685,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticModifier -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticModifier">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StorageClassModifier"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternModifier"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterModifier"/>
@@ -1345,7 +1699,12 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isInterestOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LorenzoBacchiani"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StructCodeExample"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union"/>
     </owl:NamedIndividual>
@@ -1361,6 +1720,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.programiz.com/c-programming/c-structure-examples"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.2</rating>
     </owl:NamedIndividual>
     
 
@@ -1368,7 +1728,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Summary -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Summary">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Summary"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:NamedIndividual>
     
 
@@ -1376,7 +1739,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Survey -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Survey">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Physic"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Survey"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
     </owl:NamedIndividual>
     
 
@@ -1390,6 +1756,7 @@
         <hasDifficulty rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Easy"/>
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.xcoding.it/lezione/lo-switch-in-c/"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchStatement"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">5.0</rating>
     </owl:NamedIndividual>
     
 
@@ -1397,7 +1764,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DecisionMakingStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseStatement"/>
     </owl:NamedIndividual>
     
@@ -1406,7 +1776,12 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ComplexType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DataType"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isInterestOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AlbertoBacchiani"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#UnionCodeExample"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Enum"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Struct"/>
     </owl:NamedIndividual>
@@ -1423,6 +1798,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.tutorialspoint.com/cprogramming/c_unions.htm"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Union"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CodeExample"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.6</rating>
     </owl:NamedIndividual>
     
 
@@ -1430,7 +1806,17 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#University -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#University">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EducationalLevel"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#University"/>
+        <educationalLevelOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LorenzoBacchiani"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Valuable -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Valuable">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Rating"/>
     </owl:NamedIndividual>
     
 
@@ -1438,7 +1824,12 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObjectType"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Media"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Theory"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Video"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternVideo"/>
+        <isTypeOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatementVideo"/>
     </owl:NamedIndividual>
     
 
@@ -1446,7 +1837,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Volatile -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Volatile">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Modifier"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#TypeQualifier"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#VolatileLecture"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Const"/>
     </owl:NamedIndividual>
     
@@ -1461,6 +1855,7 @@
         <hasSource rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://en.wikipedia.org/wiki/Volatile_(computer_programming)"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Volatile"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Lecture"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.6</rating>
     </owl:NamedIndividual>
     
 
@@ -1468,7 +1863,10 @@
     <!-- http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatement -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatement">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LoopStatement"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatement"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/Educational-Ontology-C#Argument"/>
+        <isTopicOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatementAudio"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatement"/>
         <skos:related rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatement"/>
@@ -1486,6 +1884,7 @@
         <hasDifficulty rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Medium"/>
         <hasTopic rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#WhileStatement"/>
         <hasType rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Audio"/>
+        <rating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.5</rating>
     </owl:NamedIndividual>
     
 
@@ -1494,6 +1893,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_10_i_vettori.686.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArraySlide"/>
     </owl:NamedIndividual>
     
 
@@ -1502,6 +1902,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_12_i_puntatori_i_parte.699.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#PointerSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1510,6 +1911,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_13_i_puntatori_ii_parte.700.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#PointerSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1518,6 +1920,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_15_i_puntatori_iii_parte.708.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#PointerSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1526,6 +1929,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_16_le_funzioni_parte_i.709.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1534,6 +1938,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_17_le_funzioni_parte_ii.711.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1542,6 +1947,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_18_le_funzioni_parte_iii.712.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1550,6 +1956,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.programmazione.info/lucidi_19_le_funzioni_parte_iv.716.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#FunctionSlide"/>
     </owl:NamedIndividual>
     
 
@@ -1558,6 +1965,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@http://www.science.unitn.it/~fiorella/guidac/guidac016.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#BreakCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -1566,6 +1974,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://codeforwin.org/2015/06/for-do-while-loop-programming-exercises.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DoStatementExercise"/>
     </owl:NamedIndividual>
     
 
@@ -1574,6 +1983,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://docs.microsoft.com/it-it/cpp/c-language/continue-statement-c?view=vs-2019">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ContinueStatementLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1582,6 +1992,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://docs.microsoft.com/it-it/cpp/c-language/return-statement-c?view=vs-2019">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReturnLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1590,6 +2001,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://docs.microsoft.com/it-it/cpp/preprocessor/hash-define-directive-c-cpp?view=vs-2019">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DefineDirectiveLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1598,6 +2010,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://en.wikipedia.org/wiki/Dereference_operator">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferenceLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1606,6 +2019,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://en.wikipedia.org/wiki/Static_(keyword)">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StaticLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1614,6 +2028,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://en.wikipedia.org/wiki/Volatile_(computer_programming)">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#VolatileLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1622,6 +2037,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://riptutorial.com/c/example/12392/auto">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#AutoCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -1630,6 +2046,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://stackoverflow.com/questions/464560/how-to-use-include-directive-correctly">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IncludeDirectiveLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1638,6 +2055,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.cs.auckland.ac.nz/references/unix/digital/AQTLTBTE/DOCU_078.HTM">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConditionalDirectiveLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1646,6 +2064,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.geeksforgeeks.org/const-qualifier-in-c/">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ConstLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1654,6 +2073,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.geeksforgeeks.org/enumeration-enum-c/">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#EnumLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1662,6 +2082,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.html.it/pag/15511/dichiarazione-di-variabili-puntatore/">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#DereferenceLecture"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ReferencingLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1670,6 +2092,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.programiz.com/c-programming/c-goto-statement">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#GotoCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -1678,6 +2101,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.programiz.com/c-programming/c-structure-examples">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#StructCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -1686,6 +2110,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.tutorialspoint.com/cprogramming/c_type_casting.htm">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#CastExpressionLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1694,6 +2119,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.tutorialspoint.com/cprogramming/c_unions.htm">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#UnionCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -1702,6 +2128,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.tutorialspoint.com/cprogramming/if_else_statement_in_c.htm">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#IfThenElseCodeExample"/>
     </owl:NamedIndividual>
     
 
@@ -1710,6 +2137,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.w3resource.com/c-programming-exercises/array/index.php">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ArrayExercise"/>
     </owl:NamedIndividual>
     
 
@@ -1718,6 +2146,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.webmasterpoint.org/programmazione/programmazione/c/variabili-register.html">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#RegisterLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1726,6 +2155,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.xcoding.it/lezione/lo-switch-in-c/">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#SwitchLecture"/>
     </owl:NamedIndividual>
     
 
@@ -1734,6 +2164,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.youtube.com/watch?v=FPjLbPu5BsQ">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ForStatementVideo"/>
     </owl:NamedIndividual>
     
 
@@ -1742,7 +2173,795 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#@https://www.youtube.com/watch?v=ySY_FlA7EvA">
         <rdf:type rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Source"/>
+        <isSourceOf rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ExternVideo"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#student">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#source">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#topic">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#level">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s1">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s2">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#difficulty">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S4</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObject"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#rating"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.9</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.5</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasValue"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Valuable"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S3</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObject"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#rating"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.4</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasValue"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#High_Valuable"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S5</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObject"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#rating"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#r"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasValue"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#o"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Low_Valuable"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#student"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LearningObject"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasSource"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#source"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasTopic"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#topic"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasEducationalLevel"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#student"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#level"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#adaptTo"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#level"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasInterest"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#student"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#topic"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#useSource"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#student"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#source"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S7</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#MaterialRetrieved"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                <swrl:arguments>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </swrl:arguments>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasBadge"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#ActiveUser"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S6</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#MaterialRetrieved"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasBadge"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#HighWillingUser"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S8</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#MaterialRetrieved"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#q"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasBadge"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#LazyUser"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrla:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s1"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#Student"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s2"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#useSource"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s1"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#source"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#useSource"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s2"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#source"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#isSourceOf"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#source"/>
+                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasDifficulty"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#difficulty"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasTopic"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#topic"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#adaptTo"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#object"/>
+                                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#level"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasInterest"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s1"/>
+                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#topic"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#hasInterest"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s2"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#topic"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#handleMaterialDifficultyLevel"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s1"/>
+                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#difficulty"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#handleMaterialDifficultyLevel"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#s2"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/lori/ontologies/2020/3/C-Educational-Ontology#difficulty"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
 </rdf:RDF>
 
 
